@@ -9,6 +9,12 @@
 
   <style>
     /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       line-height: 1.6;
@@ -16,6 +22,9 @@
       padding: 0;
       color: #333;
       background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the body takes full height */
     }
 
     /* Header Styles */
@@ -83,6 +92,7 @@
     /* Main Content */
     main {
       padding: 20px;
+      flex-grow: 1; /* Ensure the content takes up the remaining space */
     }
 
     /* Labs List */
