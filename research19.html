@@ -38,14 +38,13 @@
       line-height: 1.8;
     }
 
-    .form-row input[type="text"], 
-    .form-row input[type="number"], 
-    .form-row input[type="file"] {
+    .form-row div {
       width: 75%;
       padding: 8px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      background-color: #f0f0f0; /* Read-only field background */
     }
 
     /* Make "Зураг" label larger */
@@ -54,21 +53,10 @@
       font-size: 1.2rem;  /* Larger font for the image label */
     }
 
-    .form-row input[type="file"] {
-      height: 150px; /* Larger height for image upload */
-      cursor: pointer;
-    }
-
     .form-row img {
       max-width: 100%;
       max-height: 200px;
       margin-top: 10px;
-    }
-
-    /* Smaller labels for text input fields */
-    .form-row input[type="text"], 
-    .form-row input[type="number"] {
-      font-size: 14px;
     }
 
     button {
@@ -93,136 +81,74 @@
   <h1>Тоног төхөөрөмжийн бүртгэл</h1>
 
   <div class="form-container">
-    <form id="equipment-form">
-      <div class="form-row">
-        <label for="name">Тоног төхөөрөмжийн нэр</label>
-        <input type="text" id="name" name="name">
-      </div>
+    <div class="form-row">
+      <label>Тоног төхөөрөмжийн нэр</label>
+      <div id="name">Тоног төхөөрөмжийн нэр 1</div>
+    </div>
 
-      <div class="form-row">
-        <label for="registrationNumber">Бүртгэлийн дугаар</label>
-        <input type="text" id="registrationNumber" name="registrationNumber">
-      </div>
+    <div class="form-row">
+      <label>Бүртгэлийн дугаар</label>
+      <div id="registrationNumber">123456789</div>
+    </div>
 
-      <div class="form-row" id="image-label">
-        <label for="image">Зураг</label>
-        <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
-        <img id="imagePreview" src="" alt="Image preview">
-      </div>
+    <div class="form-row" id="image-label">
+      <label>Зураг</label>
+      <img id="imagePreview" src="your-image-url.jpg" alt="Image preview">
+    </div>
 
-      <div class="form-row">
-        <label for="brand">Марк</label>
-        <input type="text" id="brand" name="brand">
-      </div>
+    <div class="form-row">
+      <label>Марк</label>
+      <div id="brand">Марк 1</div>
+    </div>
 
-      <div class="form-row">
-        <label for="serialNumber">Сериал дугаар</label>
-        <input type="text" id="serialNumber" name="serialNumber">
-      </div>
+    <div class="form-row">
+      <label>Сериал дугаар</label>
+      <div id="serialNumber">SN123456</div>
+    </div>
 
-      <div class="form-row">
-        <label for="country">Үйлдвэрлэсэн орон</label>
-        <input type="text" id="country" name="country">
-      </div>
+    <div class="form-row">
+      <label>Үйлдвэрлэсэн орон</label>
+      <div id="country">USA</div>
+    </div>
 
-      <div class="form-row">
-        <label for="year">Үйлдвэрлэсэн он</label>
-        <input type="number" id="year" name="year">
-      </div>
+    <div class="form-row">
+      <label>Үйлдвэрлэсэн он</label>
+      <div id="year">2020</div>
+    </div>
 
-      <div class="form-row">
-        <label for="yearOfUse">Ашиглалтад орсон он</label>
-        <input type="number" id="yearOfUse" name="yearOfUse">
-      </div>
+    <div class="form-row">
+      <label>Ашиглалтад орсон он</label>
+      <div id="yearOfUse">2021</div>
+    </div>
 
-      <div class="form-row">
-        <label for="capacity">Техникийн хүчин чадал</label>
-        <input type="text" id="capacity" name="capacity">
-      </div>
+    <div class="form-row">
+      <label>Техникийн хүчин чадал</label>
+      <div id="capacity">500kg</div>
+    </div>
 
-      <div class="form-row">
-        <label for="technicalRequirements">Техникийн шаардлага хангасан эсэх</label>
-        <input type="text" id="technicalRequirements" name="technicalRequirements">
-      </div>
+    <div class="form-row">
+      <label>Техникийн шаардлага хангасан эсэх</label>
+      <div id="technicalRequirements">Тийм</div>
+    </div>
 
-      <div class="form-row">
-        <label for="electricity">Цахилгаан чадлын хэмжээ</label>
-        <input type="text" id="electricity" name="electricity">
-      </div>
+    <div class="form-row">
+      <label>Цахилгаан чадлын хэмжээ</label>
+      <div id="electricity">220V</div>
+    </div>
 
-      <div class="form-row">
-        <label for="power">Чадлын нэгж (W)</label>
-        <input type="number" id="power" name="power">
-      </div>
+    <div class="form-row">
+      <label>Чадлын нэгж (W)</label>
+      <div id="power">1500W</div>
+    </div>
 
-      <div class="form-row">
-        <label for="roomNumber">Өрөөний дугаар</label>
-        <input type="text" id="roomNumber" name="roomNumber">
-      </div>
+    <div class="form-row">
+      <label>Өрөөний дугаар</label>
+      <div id="roomNumber">101</div>
+    </div>
 
-      <button type="button" onclick="saveData()">Хадгалах</button>
-    </form>
   </div>
-
-  <script>
-    // Function to preview the uploaded image
-    function previewImage(event) {
-      const imagePreview = document.getElementById('imagePreview');
-      const file = event.target.files[0];
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function() {
-          imagePreview.src = reader.result;
-          // Save the base64 string of the image to localStorage
-          localStorage.setItem('equipmentImage', reader.result);
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    // Load saved data from localStorage
-    window.onload = function() {
-      // Populate the form fields with saved data
-      document.getElementById('name').value = localStorage.getItem('name') || '';
-      document.getElementById('registrationNumber').value = localStorage.getItem('registrationNumber') || '';
-      document.getElementById('brand').value = localStorage.getItem('brand') || '';
-      document.getElementById('serialNumber').value = localStorage.getItem('serialNumber') || '';
-      document.getElementById('country').value = localStorage.getItem('country') || '';
-      document.getElementById('year').value = localStorage.getItem('year') || '';
-      document.getElementById('yearOfUse').value = localStorage.getItem('yearOfUse') || '';
-      document.getElementById('capacity').value = localStorage.getItem('capacity') || '';
-      document.getElementById('technicalRequirements').value = localStorage.getItem('technicalRequirements') || '';
-      document.getElementById('electricity').value = localStorage.getItem('electricity') || '';
-      document.getElementById('power').value = localStorage.getItem('power') || '';
-      document.getElementById('roomNumber').value = localStorage.getItem('roomNumber') || '';
-
-      const savedImage = localStorage.getItem('equipmentImage');
-      if (savedImage) {
-        document.getElementById('imagePreview').src = savedImage;
-      }
-    };
-
-    // Function to save data
-    function saveData() {
-      // Save the form data to localStorage
-      localStorage.setItem('name', document.getElementById('name').value);
-      localStorage.setItem('registrationNumber', document.getElementById('registrationNumber').value);
-      localStorage.setItem('brand', document.getElementById('brand').value);
-      localStorage.setItem('serialNumber', document.getElementById('serialNumber').value);
-      localStorage.setItem('country', document.getElementById('country').value);
-      localStorage.setItem('year', document.getElementById('year').value);
-      localStorage.setItem('yearOfUse', document.getElementById('yearOfUse').value);
-      localStorage.setItem('capacity', document.getElementById('capacity').value);
-      localStorage.setItem('technicalRequirements', document.getElementById('technicalRequirements').value);
-      localStorage.setItem('electricity', document.getElementById('electricity').value);
-      localStorage.setItem('power', document.getElementById('power').value);
-      localStorage.setItem('roomNumber', document.getElementById('roomNumber').value);
-      
-      alert("Мэдээлэл хадгалагдлаа!");
-    }
-  </script>
 
 </body>
 </html>
+
 
