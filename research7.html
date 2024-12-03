@@ -16,6 +16,12 @@
       margin-bottom: 30px;
     }
 
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
     .form-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -74,6 +80,20 @@
     button:hover {
       background-color: #45a049;
     }
+
+    /* Styling for the link under the image */
+    .image-link {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+      display: block;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .image-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -81,6 +101,8 @@
   <h1>Тоног төхөөрөмжийн бүртгэл</h1>
 
   <div class="form-container">
+    <h2>Тоног төхөөрөмжийн зориулалт</h2> <!-- Small header for purpose -->
+    
     <div class="form-row">
       <label>Тоног төхөөрөмжийн нэр</label>
       <div id="name">Тоног төхөөрөмжийн нэр 1</div>
@@ -93,7 +115,9 @@
 
     <div class="form-row" id="image-label">
       <label>Зураг</label>
-      <img id="imagePreview" src="your-image-url.jpg" alt="Image preview">
+      <img id="imagePreview" src="https://assets.onecompiler.app/42ypgxm44/42zv5phna/carbon-dioxide-incubator.webp" alt="Image preview">
+      <!-- Link below the image -->
+      <a href="#" class="image-link" id="imageLink">Дэлгэрэнгүй мэдээлэл</a>
     </div>
 
     <div class="form-row">
@@ -121,6 +145,8 @@
       <div id="yearOfUse">2021</div>
     </div>
 
+    <h2>Техникийн үндсэн үзүүлэлтүүд</h2> <!-- Small header for technical specs -->
+    
     <div class="form-row">
       <label>Техникийн хүчин чадал</label>
       <div id="capacity">500kg</div>
@@ -150,5 +176,3 @@
 
 </body>
 </html>
-
-
