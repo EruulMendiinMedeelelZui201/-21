@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лабораторууд</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #009688;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Search Bar Styles */
+    .search-bar {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Labs List */
+    .labs-list {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .labs-list li {
+      background: white;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 1.2rem;
+      display: none; /* Hide all by default */
+    }
+
+    .labs-list li.visible {
+      display: block; /* Show visible labs */
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Лабораторууд</h1>
+  </header>
+
+  <main>
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Лабораториуд хайх...">
+    </div>
+
+    <!-- Labs List -->
+    <ul class="labs-list" id="labsList">
+      <li class="lab-name">Эсийн биологийн лаборатори</li>
+      <li class="lab-name">Молекул биологийн лаборатори</li>
+      <li class="lab-name">Биологийн химийн лаборатори</li>
+      <li class="lab-name">Эмгэг судлалын лаборатори</li>
+      <li class="lab-name">Тархи судлалын лаборатори</li>
+      <li class="lab-name">Иммунобиологийн лаборатори</li>
+      <li class="lab-name">Лабораторийн амьтан судлалын төв</li>
+      <li class="lab-name">Сорьцийн өрөө</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Био-Анагаахын Хүрээлэн. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript to filter the labs based on search input
+    const searchInput = document.getElementById('searchInput');
+    const labsList = document.getElementById('labsList');
+    const labItems = document.querySelectorAll('.lab-name');
+
+    searchInput.addEventListener('input', function() {
+      const searchQuery = searchInput.value.toLowerCase();
+
+      labItems.forEach(function(item) {
+        const labName = item.textContent.toLowerCase();
+        if (labName.startsWith(searchQuery)) {
+          item.classList.add('visible'); // Show lab item
+        } else {
+          item.classList.remove('visible'); // Hide lab item
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
