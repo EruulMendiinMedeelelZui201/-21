@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login Form</h2>
+
+    <!-- Display error message -->
+    <div class="error" id="error-message"></div>
+
+    <form method="POST" action="login.php" id="login-form">
+        <label for="username">Email Address:</label><br>
+        <input type="email" id="username" name="username" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<script>
+// Handle form submission via JavaScript (AJAX) to prevent page reload
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+
+    // Send form data to backend PHP script (login.php) via POST using fetch API
+    fetch('login.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json()) // Expecting JSON response from PHP
+    .then(data => {
+        if (data.success) {
+            window.location.href = "welcome.html"; // Redirect on success
+        } else {
+            document.getElementById('error-message').innerText = data.message; // Show error
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
+
+</body>
+</html>
