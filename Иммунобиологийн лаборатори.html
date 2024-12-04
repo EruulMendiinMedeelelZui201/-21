@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Иммунобиологийн лаборатори - Лавлах хуудас</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Basic Styles (same as before) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #009688;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      flex-grow: 1;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1000;
+      position: absolute;
+      right: 20px;
+    }
+    .hamburger-menu div {
+      width: 30px;
+      height: 4px;
+      background-color: #fff;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Main Styles */
+    main {
+      padding: 40px 20px;
+      flex-grow: 1;
+      background-color: #fff;
+    }
+
+    /* Research Links Section */
+    #research-links ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    #research-links ul li {
+      width: 200px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    #research-links ul li a {
+      color: #009688;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      .hamburger-menu {
+        display: flex;
+      }
+      nav ul.active {
+        display: flex;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Эсийн биологийн лаборатори</h1>
+    
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i>Нүүр хуудас</a></li>
+        <li><a href="Эсийн биологийн лаборатори.html"><i class="fas fa-flask"></i>Эсийн биологийн лаборатори</a></li>
+        <li><a href="Молекул биологийн лаборатори.html"><i class="fas fa-dna"></i>Молекул биологийн лаборатори</a></li>
+        <li><a href="Биологийн химийн лаборатори.html"><i class="fas fa-biohazard"></i>Биологийн химийн лаборатори</a></li>
+        <li><a href="Эмгэг судлалын лаборатори.html"><i class="fas fa-stethoscope"></i>Эмгэг судлалын лаборатори</a></li>
+        <li><a href="Тархи судлалын лаборатори"><i class="fas fa-brain"></i>Тархи судлалын лаборатори</a></li>
+        <li><a href="Иммунобиологийн лаборатори.html"><i class="fas fa-syringe"></i>Иммунобиологийн лаборатори</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="research-links">
+      <h2>Иммунобиологийн лаборатори</h2>
+      <p>Иммунобиологийн лаборатори нь олон судалгааны өргөн хүрээнд ажиллаж байна. Дараах тоног төхөөрөмжийг танилцуулж байна:</p>
+
+      <ul>
+        <!-- Completed links with a checkmark icon -->
+        <li><a href="research1.html"><i class="fas fa-check-circle"></i> Olympus B*51 fluorescence</a></li>
+        <li><a href="research2.html"><i class="fas fa-check-circle"></i> Жижиг центрифуг</a></li>
+        <li><a href="research4.html"><i class="fas fa-check-circle"></i> Ус цэвэршүүлэгч систем</a></li>
+        <li><a href="research5.html"><i class="fas fa-check-circle"></i> Судалгаа 5</a></li>
+        <li><a href="research8.html"><i class="fas fa-check-circle"></i> Центрифуг</a></li>
+        <li><a href="research9.html"><i class="fas fa-check-circle"></i> Микро центрифуг</a></li>
+        <li><a href="research10.html"><i class="fas fa-check-circle"></i> Урвалж хадгалах хөргөгч</a></li>
+        <li><a href="research11.html"><i class="fas fa-check-circle"></i> Ус шүүгч цэвэршүүлэгч</a></li>
+        <li><a href="research13.html"><i class="fas fa-check-circle"></i> Вортекс 363000</a></li>
+        <li><a href="research14.html"><i class="fas fa-check-circle"></i> Inverted microscope</a></li>
+        <li><a href="research15.html"><i class="fas fa-check-circle"></i> Ариун шүүгээ</a></li>
+        <li><a href="research16.html"><i class="fas fa-check-circle"></i> Хатаах шүүгээ</a></li>
+        <li><a href="research19.html"><i class="fas fa-check-circle"></i> Шингэн сорогч</a></li>
+        <li><a href="research20.html"><i class="fas fa-check-circle"></i> Конфокал электрон микроскоп</a></li>
+        <li><a href="research21.html"><i class="fas fa-check-circle"></i> SEM</a></li>
+        <li><a href="research22.html"><i class="fas fa-check-circle"></i> Biologilca safety cabinet</a></li>
+        <li><a href="research23.html"><i class="fas fa-check-circle"></i> Усан ванн</a></li>
+        <li><a href="research24.html"><i class="fas fa-check-circle"></i> Мөсний машин</a></li>
+        <li><a href="research25.html"><i class="fas fa-check-circle"></i> Урвалж хадгалах хөргөгч -20</a></li>
+        <li><a href="research26.html"><i class="fas fa-check-circle"></i> MACSQunat analyser 10</a></li>
+        <li><a href="research27.html"><i class="fas fa-check-circle"></i> Центрифуг</a></li>
+        <li><a href="research28.html"><i class="fas fa-check-circle"></i> Урвалж хадгалах хөргөгч -4</a></li>
+        <li><a href="research29.html"><i class="fas fa-check-circle"></i> Агаар цэвэршүүлэгч</a></li>
+
+        <!-- Regular links without completion icon -->
+        <li><a href="research3.html">CO2 инкубатор</a></li>
+        <li><a href="research6.html">Судалгаа 6</a></li>
+        <li><a href="research7.html">Судалгаа 7</a></li>
+        <li><a href="research12.html">Судалгаа 4</a></li>
+        <li><a href="research18.html">Судалгаа 2</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Иммунобиологийн лаборатори</p>
+  </footer>
+
+  <script>
+    // Toggle for the hamburger menu on small screens
+    function toggleMenu() {
+      document.querySelector('nav ul').classList.toggle('active');
+    }
+  </script>
 
