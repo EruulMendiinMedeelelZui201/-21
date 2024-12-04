@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"> 
+    <style>
+      /* General reset for margins and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+      }
+
+      .login {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #4CAF50;
+      }
+
+      .login form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        border-color: #4CAF50;
+      }
+
+      input[type="submit"] {
+        background: #4CAF50;
+        color: white;
+        padding: 12px;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+        background: #45a049;
+      }
+
+      .login .icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+      }
+
+      .input-container {
+        position: relative;
+        margin-bottom: 15px;
+      }
+
+      .input-container input {
+        padding-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login">
+      <h1>Login</h1>
+      <form action="authenticate.php" method="post">
+        <div class="input-container">
+          <label for="username">
+            <i class="fas fa-user icon"></i>
+          </label>
+          <input type="text" name="username" placeholder="Username" id="username" required>
+        </div>
+        <div class="input-container">
+          <label for="password">
+            <i class="fas fa-lock icon"></i>
+          </label>
+          <input type="password" name="password" placeholder="Password" id="password" required>
+        </div>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+  </body>
+</html>
