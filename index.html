@@ -220,19 +220,6 @@
       const nav = document.querySelector('nav');
       nav.classList.toggle('open');
     }
-
-    // Check if the user is authenticated by checking the JWT token
-    window.onload = async function() {
-      const response = await fetch('/.netlify/functions/check-auth', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
-
-      if (!response.ok) {
-        // If the user is not authenticated, redirect to the login page
-        window.location.href = 'login.html';
-      }
-    }
   </script>
 
 </body>
