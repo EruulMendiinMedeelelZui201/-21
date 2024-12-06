@@ -1,0 +1,5 @@
+            - name: Deploy Firebase - Functions + Storage + Firestore
+  # You may pin to the exact commit or the version.
+  # uses: ivoilic/deploy-firebase-functions-storage-firestore@525029659b640b26b17d75b91d7dd689387213ab
+  uses: ivoilic/deploy-firebase-functions-storage-firestore@v1.1
+          
