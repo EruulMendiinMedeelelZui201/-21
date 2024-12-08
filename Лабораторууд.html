@@ -71,11 +71,16 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       font-size: 1.2rem;
-      display: none; /* Hide all by default */
     }
 
-    .labs-list li.visible {
-      display: block; /* Show visible labs */
+    .labs-list li a {
+      color: #009688;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .labs-list li a:hover {
+      text-decoration: underline;
     }
 
     /* Footer */
@@ -98,19 +103,19 @@
   <main>
     <!-- Search Bar -->
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Лабораториуд хайх...">
+      <input type="text" id="searchInput" placeholder="Лабораторyуд хайх...">
     </div>
 
     <!-- Labs List -->
     <ul class="labs-list" id="labsList">
-      <li class="lab-name">Эсийн биологийн лаборатори</li>
-      <li class="lab-name">Молекул биологийн лаборатори</li>
-      <li class="lab-name">Биологийн химийн лаборатори</li>
-      <li class="lab-name">Эмгэг судлалын лаборатори</li>
-      <li class="lab-name">Тархи судлалын лаборатори</li>
-      <li class="lab-name">Иммунобиологийн лаборатори</li>
-      <li class="lab-name">Лабораторийн амьтан судлалын төв</li>
-      <li class="lab-name">Сорьцийн өрөө</li>
+      <li><a href="Эсийн биологийн лаборатори.html" class="lab-name">Эсийн биологийн лаборатори</a></li>
+      <li><a href="Молекул биологийн лаборатори.html" class="lab-name">Молекул биологийн лаборатори</a></li>
+      <li><a href="Биологийн химийн лаборатори.html" class="lab-name">Биологийн химийн лаборатори</a></li>
+      <li><a href="Эмгэг судлалын лаборатори.html" class="lab-name">Эмгэг судлалын лаборатори</a></li>
+      <li><a href="Тархи судлалын лаборатори.html" class="lab-name">Тархи судлалын лаборатори</a></li>
+      <li><a href="Иммунобиологийн лаборатори.html" class="lab-name">Иммунобиологийн лаборатори</a></li>
+      <li><a href="Лабораторийн амьтан судлалын төв.html" class="lab-name">Лабораторийн амьтан судлалын төв</a></li>
+      <li><a href="Сорьцийн өрөө.html" class="lab-name">Сорьцийн өрөө</a></li>
     </ul>
   </main>
 
@@ -128,11 +133,11 @@
       const searchQuery = searchInput.value.toLowerCase();
 
       labItems.forEach(function(item) {
-        const labName = item.textContent.toLowerCase();
-        if (labName.startsWith(searchQuery)) {
-          item.classList.add('visible'); // Show lab item
+        const labName = item.textContent.trim().toLowerCase();
+        if (labName.includes(searchQuery)) {
+          item.closest('li').style.display = 'block'; // Show lab item
         } else {
-          item.classList.remove('visible'); // Hide lab item
+          item.closest('li').style.display = 'none'; // Hide lab item
         }
       });
     });
@@ -140,3 +145,4 @@
 
 </body>
 </html>
+
