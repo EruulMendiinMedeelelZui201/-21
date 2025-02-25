@@ -7,6 +7,9 @@
   <!-- Link to Font Awesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+  <!-- Load Google's API Client -->
+  <script src="https://apis.google.com/js/api:client.js"></script>
+
   <style>
     /* General Styles */
     * {
@@ -173,6 +176,15 @@
       }
     }
 
+    /* Hide content initially for unauthenticated users */
+    #authenticated-content {
+      display: none;
+    }
+
+    /* Google sign-in button styles */
+    #google-sign-in {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -195,18 +207,30 @@
   </header>
 
   <main>
-    <!-- Laboratories Section -->
-    <section id="labs">
-      <ul>
-        <li><a href="Эсийн биологийн лаборатори.html"><i class="fas fa-flask"></i>Эсийн биологийн лаборатори</a></li>
-        <li><a href="Молекул биологийн лаборатори.html"><i class="fas fa-dna"></i>Молекул биологийн лаборатори</a></li>
-        <li><a href="Биологийн химийн лаборатори.html"><i class="fas fa-biohazard"></i>Биологийн химийн лаборатори</a></li>
-        <li><a href="Эмгэг судлалын лаборатори.html"><i class="fas fa-stethoscope"></i>Эмгэг судлалын лаборатори</a></li>
-        <li><a href="Тархи судлалын лаборатори.html"><i class="fas fa-brain"></i>Тархи судлалын лаборатори</a></li>
-        <li><a href="Иммунобиологийн лаборатори.html"><i class="fas fa-syringe"></i>Иммунобиологийн лаборатори</a></li>
-        <li><a href="Лаборатори амьтан судлалын төв.html"><i class="fas fa-paw"></i>Лаборатори амьтан судлалын төв</a></li>
-        <li><a href="Сорьцийн өрөө.html"><i class="fas fa-flask"></i>Сорьцийн өрөө</a></li>
-      </ul>
+    <!-- Google Sign-In Section -->
+    <section id="google-sign-in">
+      <h2>Sign In with Google</h2>
+      <!-- Google Sign-In Button -->
+      <button id="sign-in-button">Sign in with Google</button>
+      <p id="user-info"></p>
+    </section>
+
+    <!-- Main Content for Authenticated Users (Initially Hidden) -->
+    <section id="authenticated-content">
+      <h2>Welcome to Био-Анагаахын Хүрээлэн!</h2>
+      <!-- Laboratories Section -->
+      <section id="labs">
+        <ul>
+          <li><a href="Эсийн биологийн лаборатори.html"><i class="fas fa-flask"></i>Эсийн биологийн лаборатори</a></li>
+          <li><a href="Молекул биологийн лаборатори.html"><i class="fas fa-dna"></i>Молекул биологийн лаборатори</a></li>
+          <li><a href="Биологийн химийн лаборатори.html"><i class="fas fa-biohazard"></i>Биологийн химийн лаборатори</a></li>
+          <li><a href="Эмгэг судлалын лаборатори.html"><i class="fas fa-stethoscope"></i>Эмгэг судлалын лаборатори</a></li>
+          <li><a href="Тархи судлалын лаборатори.html"><i class="fas fa-brain"></i>Тархи судлалын лаборатори</a></li>
+          <li><a href="Иммунобиологийн лаборатори.html"><i class="fas fa-syringe"></i>Иммунобиологийн лаборатори</a></li>
+          <li><a href="Лаборатори амьтан судлалын төв.html"><i class="fas fa-paw"></i>Лаборатори амьтан судлалын төв</a></li>
+          <li><a href="Сорьцийн өрөө.html"><i class="fas fa-flask"></i>Сорьцийн өрөө</a></li>
+        </ul>
+      </section>
     </section>
   </main>
 
@@ -214,7 +238,65 @@
     <p>&copy; 2024 Био-Анагаахын Хүрээлэн. All rights reserved.</p>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+
   <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDK3uBbPOWNw1CtV3_Hc6pC2wGcutcQby4", // Your Web API Key
+      authDomain: "bioangaahin-hureelen.firebaseapp.com",
+      projectId: "bioangaahin-hureelen",
+      storageBucket: "bioangaahin-hureelen.appspot.com",
+      messagingSenderId: "749085132536",
+      appId: "1:749085132536:web:640efb5e19cb530e8bdd0d",
+      measurementId: "G-D87BJBYJLE"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.getAnalytics(app);
+    
+    var googleUser = {};
+
+    // Initialize Google Sign-In functionality
+    var startApp = function() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init({
+          client_id: '749085132536-mu5hqrngu8hhevi0d49u68m6u9it31gv.apps.googleusercontent.com'
+        }).then(function() {
+          attachSignin(document.getElementById('sign-in-button'));
+        });
+      });
+    };
+
+    function attachSignin(element) {
+      gapi.auth2.getAuthInstance().attachClickHandler(element, {}, function(googleUser) {
+        // Successfully signed in, display user info
+        var profile = googleUser.getBasicProfile();
+        var userInfo = `
+          <strong>User Info:</strong><br>
+          Name: ${profile.getName()}<br>
+          Email: ${profile.getEmail()}<br>
+          Image URL: <img src="${profile.getImageUrl()}" alt="User Image"><br>
+        `;
+        
+        // Display user info on the webpage
+        document.getElementById('user-info').innerHTML = userInfo;
+
+        // Show authenticated content
+        document.getElementById('authenticated-content').style.display = 'block';
+        document.getElementById('google-sign-in').style.display = 'none'; // Hide Sign-In button
+
+      }, function(error) {
+        console.log(JSON.stringify(error, undefined, 2));
+      });
+    }
+
+    // Start the Google authentication process
+    startApp();
+
     // Toggle Menu for Mobile
     function toggleMenu() {
       const nav = document.querySelector('nav');
